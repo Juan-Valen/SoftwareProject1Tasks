@@ -1,13 +1,11 @@
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class ExtraTest extends AbstractParent {
 
@@ -33,35 +31,17 @@ public class ExtraTest extends AbstractParent {
         assertEquals(0, calculator.getResult(), "Reset failed");
     }
 
-    @Test
-    public void testSquare2() {
-        calculator.square(2);
-        assertEquals(4, calculator.getResult(), "Squaring number 2 is incorrect");
+    @ParameterizedTest(name = "The square of {0}")
+    @CsvSource({ "2, 4", "4, 16", "5, 25" })
+    public void testSquare(int number, Double result) {
+        calculator.square(number);
+        assertEquals(result, calculator.getResult(), "Squaring does not seem to work correctly");
     }
 
-    @Test
-    public void testSquare4() {
-        calculator.square(4);
-        assertEquals(16, calculator.getResult(), "Squaring number 4 is incorrect");
-    }
-
-    @Test
-    public void testSquare5() {
-        calculator.square(5);
-        assertEquals(25, calculator.getResult(), "Squaring number 5 is incorrect");
-    }
-
-    @Test
-    public void testSquareRoot2() {
-        calculator.squareRoot(2);
-        assertEquals(1.414, calculator.getResult(), DELTA, "Square root number of 2 is incorrect");
-        // Add assertXXX() here, expected result should be (int) Math.sqrt(2)
-    }
-
-    @Test
-    @DisplayName("Test negative square root")
-    public void testSquareRootNegative() {
-        calculator.squareRoot(-2);
-        assertEquals(Double.NaN, calculator.getResult(),"Square root number of -2 is incorrect");
+    @ParameterizedTest(name = "The square root of {0}")
+    @CsvSource({ "2, 1.414", "-2, NaN" })
+    public void testSquareRoot(int number, Double result) {
+        calculator.squareRoot(number);
+        assertEquals(result, calculator.getResult(), DELTA, "Squaring rooting does not seem to work correctly");
     }
 }

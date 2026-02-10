@@ -1,8 +1,8 @@
 
 public class Main {
-    private static Calculator calculator = new Calculator();
 
     public static void main(String[] args) {
+        Calculator calculator = new Calculator();
 
         calculator.powerOn();
         System.out.println("...Power on...");
@@ -30,21 +30,6 @@ public class Main {
 
         calculator.powerOff();
         System.out.println("...Power off...");
-
-        calculator.add(1);
-        System.out.println("Add 1      = " + calculator.getResult());
-        calculator.add(2);
-        System.out.println("Add 2      = " + calculator.getResult());
-        calculator.reset();
-        calculator.add(10);
-        System.out.println("Add 10      = " + calculator.getResult());
-        calculator.subtract(2);
-        System.out.println("Subtract 2      = " + calculator.getResult());
-        calculator.reset();
-        calculator.add(8);
-        System.out.println("Add 8      = " + calculator.getResult());
-        calculator.divide(2);
-        System.out.println("Divide by 2      = " + calculator.getResult());
 
     }
 }

@@ -32,7 +32,6 @@ public class CalculatorTest { // The class name must end with Test
         calculator.reset();
     }
 
-    // The test method name can be anything, as long as it has the @Test annotation
     @Test
     public void testAdd() {
         calculator.add(1);

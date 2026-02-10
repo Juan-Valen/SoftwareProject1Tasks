@@ -4,16 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-// Here the ParameterizedTest annotation is used
-// Parameter pairs in a table (comma-separated values)
 
 public class SquareTest {
 
     private static Calculator calculator = new Calculator();
-    private final double DELTA = 0.001;
 
     @BeforeAll
     public static void testPowerOn() {
