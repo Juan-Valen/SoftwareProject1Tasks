@@ -2,12 +2,6 @@ pipeline {
     agent any
 
     stages {
-        
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/Juan-Valen/SoftwareProject1Tasks.git'
-            }
-        }
         stage('Build') {
             steps {
                 bat 'mvn clean install' // sh for linux and ios
