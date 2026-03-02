@@ -35,8 +35,10 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                script {
-                    docker.build("${DOCKERHUB_REPO}:${DOCKER_IMAGE_TAG}")
+                dir('junit/testing') {
+                    script {
+                        docker.build("${DOCKERHUB_REPO}:${DOCKER_IMAGE_TAG}")
+                    }
                 }
             }
         }
