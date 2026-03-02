@@ -4,7 +4,6 @@ pipeline {
     stages {
         stage("test") {
             steps {
-                sh 'ls -a';
                 sh 'mvn -f junit/testing/pom.xml test';
             }
         }
