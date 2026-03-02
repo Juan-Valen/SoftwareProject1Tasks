@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage("test") {
             steps {
-                pwd;
+                ls -a;
             }
         }
     }
