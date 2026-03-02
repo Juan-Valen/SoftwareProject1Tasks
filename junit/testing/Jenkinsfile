@@ -4,17 +4,18 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                bat 'mvn clean install' // sh for linux and ios
+                bat 'mvn -f junit/testing/pom.xml clean install' // sh for linux and ios
             }
         }
         stage('Test') {
             steps {
-                bat 'mvn test'
+                bat 'mvn -f junit/testing/pom.xml test'
+                
             }
         }
         stage('Code Coverage') {
             steps {
-                bat 'mvn jacoco:report'
+                bat 'mvn -f junit/testing/pom.xml jacoco:report'
             }
         }
         stage('Publish Test Results') {
