@@ -5,7 +5,7 @@ pipeline {
         stage("test") {
             steps {
                 sh 'ls -a';
-                mvn '-f junit/testing/pom.xml test';
+                sh 'mvn -f junit/testing/pom.xml test';
             }
         }
     }
