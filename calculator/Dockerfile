@@ -18,7 +18,7 @@ WORKDIR /app
 
 # Copy project files
 COPY pom.xml .
-COPY src ./src
+COPY ./src ./src
 
 # Build the shaded JAR
 RUN mvn clean package -DskipTests
