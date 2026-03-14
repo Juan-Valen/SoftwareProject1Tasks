@@ -5,6 +5,11 @@ services:
     image: mariadb:11
     container_name: calculator-db
     restart: always
+    healthcheck:
+      test: ["CMD", "mariadb-admin", "ping", "-h", "localhost", "-u", "root", "-pTest12"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
     environment:
       # make sure your DB_PASSWORD is correct mine is root
       MYSQL_ROOT_PASSWORD: Test12
@@ -20,7 +25,9 @@ services:
     #IMPORTANT docker build -t yourname/sum-product-fx .
     # docker push yourname/sum-product-fx: last
     # then you can change the image in the following statment
-    image: amirdirin/sum-product_fx:latest
+    build:
+      context: .
+      dockerfile: ./Dockerfile
     container_name: calculator-app
     depends_on:
       - db
